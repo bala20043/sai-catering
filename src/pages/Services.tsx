@@ -63,7 +63,7 @@ const Services = () => {
         </div>
       </section>
 
-      <KolamDivider />
+      <div className="bg-surface"><KolamDivider /></div>
 
       {/* Main Services */}
       {services.map((svc, i) => (
@@ -92,10 +92,10 @@ const Services = () => {
             </ScrollReveal>
           </div>
           {i < services.length - 1 && <KolamDivider />}
-        </section>
+      </section>
       ))}
 
-      <KolamDivider />
+      <div className="bg-surface"><KolamDivider /></div>
 
       {/* Other Services */}
       <section className="py-20 bg-surface">

@@ -51,7 +51,7 @@ const Contact = () => {
         </div>
       </section>
 
-      <KolamDivider />
+      <div className="bg-surface"><KolamDivider /></div>
 
       {/* Contact Form + Info */}
       <section className="py-20 bg-surface">
@@ -123,7 +123,7 @@ const Contact = () => {
         </div>
       </section>
 
-      <KolamDivider />
+      <div className="bg-dark"><KolamDivider /></div>
 
       {/* Map */}
       <section id="map" className="py-12 bg-dark">

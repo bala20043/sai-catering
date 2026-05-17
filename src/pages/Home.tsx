@@ -166,7 +166,7 @@ const Home = () => {
         </div>
       </section>
 
-      <KolamDivider />
+      <div className="bg-surface"><KolamDivider /></div>
 
       {/* ===== SERVICES PREVIEW ===== */}
       <section className="py-20 bg-dark kolam-bg">
@@ -208,7 +208,7 @@ const Home = () => {
         </div>
       </section>
 
-      <KolamDivider />
+      <div className="bg-dark"><KolamDivider /></div>
 
       {/* ===== FOOD SPECIALITIES SLIDER (Our Speciality) ===== */}
       <section className="relative">
@@ -236,7 +236,7 @@ const Home = () => {
         </Swiper>
       </section>
 
-      <KolamDivider />
+      <div className="bg-surface"><KolamDivider /></div>
 
       {/* ===== WHY CHOOSE US ===== */}
       <section className="py-20 bg-surface">
@@ -280,7 +280,7 @@ const Home = () => {
         </div>
       </section>
 
-      <KolamDivider />
+      <div className="bg-dark"><KolamDivider /></div>
 
       {/* ===== TESTIMONIALS ===== */}
       <section className="py-20 bg-surface">

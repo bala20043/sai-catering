@@ -44,7 +44,7 @@ const About = () => {
         </div>
       </section>
 
-      <KolamDivider />
+      <div className="bg-surface"><KolamDivider /></div>
 
       {/* Three Column About */}
       <section className="py-20 bg-surface">
@@ -81,7 +81,7 @@ const About = () => {
         </div>
       </section>
 
-      <KolamDivider />
+      <div className="bg-surface"><KolamDivider /></div>
 
       {/* Timeline */}
       <section className="py-20 bg-dark kolam-bg">
@@ -109,7 +109,7 @@ const About = () => {
         </div>
       </section>
 
-      <KolamDivider />
+      <div className="bg-dark"><KolamDivider /></div>
 
       {/* Best Catering */}
       <section className="py-20 bg-surface">
