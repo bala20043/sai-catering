@@ -48,7 +48,12 @@ export const useAdminBookings = () => {
     fetchBookings();
   };
 
+  const deleteBooking = async (id: string) => {
+    await supabase.from('bookings').delete().eq('id', id);
+    fetchBookings();
+  };
+
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { fetchBookings(); }, [fetchBookings]);
-  return { bookings, loading, updateStatus, refetch: fetchBookings };
+  return { bookings, loading, updateStatus, deleteBooking, refetch: fetchBookings };
 };

@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
           {/* Logo */}
           <div onClick={handleLogoClick} className="cursor-pointer flex items-center select-none">
-            <img src="/logo.png" alt="Sai Catering Logo" className="h-16 w-auto object-contain drop-shadow-md" />
+            <img src="/logo.png" alt="Sai Catering Logo" className="h-12 lg:h-16 w-auto object-contain drop-shadow-md" />
           </div>
 
           {/* Desktop Nav */}
@@ -84,7 +84,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Toggle */}
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden text-cream p-2">
+          <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden text-cream p-2 flex items-center justify-center">
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>

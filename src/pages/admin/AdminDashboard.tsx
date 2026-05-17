@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LayoutDashboard, ClipboardList, MessageSquare, Star, LogOut, Eye, Check, XCircle, CheckCircle, Download } from 'lucide-react';
+import { LayoutDashboard, ClipboardList, MessageSquare, Star, LogOut, Eye, Check, XCircle, CheckCircle, Download, Trash2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { useAdmin } from '../../hooks/useAdmin';
@@ -13,7 +13,7 @@ type Tab = 'dashboard' | 'bookings' | 'contacts' | 'testimonials';
 const AdminDashboard = () => {
   const { user, signOut, loading: authLoading } = useAdmin();
   const navigate = useNavigate();
-  const { bookings, updateStatus } = useAdminBookings();
+  const { bookings, updateStatus, deleteBooking } = useAdminBookings();
   const [tab, setTab] = useState<Tab>('dashboard');
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
@@ -58,6 +58,13 @@ const AdminDashboard = () => {
     await supabase.from('testimonials').update({ is_approved: approved }).eq('id', id);
     setTestimonials(prev => prev.map(t => t.id === id ? { ...t, is_approved: approved } : t));
     toast.success(approved ? 'Testimonial approved' : 'Testimonial rejected');
+  };
+
+  const handleDeleteBooking = async (id: string) => {
+    if (window.confirm('Are you sure you want to permanently delete this booking?')) {
+      await deleteBooking(id);
+      toast.success('Booking deleted successfully');
+    }
   };
 
   if (authLoading) return <div className="min-h-screen bg-dark flex items-center justify-center"><div className="loader-kolam" /></div>;
@@ -166,6 +173,7 @@ const AdminDashboard = () => {
                           {b.status === 'pending' && <button onClick={() => updateStatus(b.id, 'confirmed')} className="p-1.5 hover:bg-green-500/10 rounded-lg text-green-400" title="Confirm"><Check size={14} /></button>}
                           {b.status !== 'cancelled' && <button onClick={() => updateStatus(b.id, 'cancelled')} className="p-1.5 hover:bg-red-500/10 rounded-lg text-red-400" title="Cancel"><XCircle size={14} /></button>}
                           {b.status === 'confirmed' && <button onClick={() => updateStatus(b.id, 'completed')} className="p-1.5 hover:bg-blue-500/10 rounded-lg text-blue-400" title="Complete"><CheckCircle size={14} /></button>}
+                          <button onClick={() => handleDeleteBooking(b.id)} className="p-1.5 hover:bg-red-500/10 rounded-lg text-red-500" title="Delete"><Trash2 size={14} /></button>
                         </div>
                       </td>
                     </tr>

@@ -31,9 +31,14 @@ interface Props {
 const BookingModal = ({ isOpen, onClose }: Props) => {
   const { submitBooking, loading } = useBooking();
   const [step, setStep] = useState(1);
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>({
+  const { register, handleSubmit, formState: { errors }, reset, trigger } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
+
+  const handleNextStep = async () => {
+    const isValid = await trigger(['name', 'email', 'phone', 'event_type', 'event_date', 'guest_count']);
+    if (isValid) setStep(2);
+  };
 
   const onSubmit = async (data: FormData) => {
     // eslint-disable-next-line
@@ -126,7 +131,7 @@ const BookingModal = ({ isOpen, onClose }: Props) => {
                     <input {...register('guest_count', { valueAsNumber: true })} type="number" placeholder="Expected guests" className={inputClass} />
                     {errors.guest_count && <p className="text-primary-light text-xs mt-1">{errors.guest_count.message}</p>}
                   </div>
-                  <button type="button" onClick={() => setStep(2)} className="btn-gold w-full text-center">
+                  <button type="button" onClick={handleNextStep} className="btn-gold w-full text-center">
                     Next Step →
                   </button>
                 </motion.div>
