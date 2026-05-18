@@ -25,6 +25,12 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -33,7 +39,6 @@ body {
   font-family: 'Hind Madurai', sans-serif;
   background-color: var(--cream);
   color: var(--text-dark);
-  overflow-x: hidden;
 }
 
 /* ===== SHIMMER TEXT ===== */

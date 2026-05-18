@@ -123,14 +123,6 @@ const Home = () => {
             </div>
           </motion.div>
         </div>
-
-        {/* Floating petals */}
-        {[...Array(5)].map((_, i) => (
-          <div key={i} className="petal text-accent/20 text-2xl" style={{
-            left: `${15 + i * 18}%`, animationDelay: `${i * 1.5}s`,
-            animation: `petal-fall ${6 + i}s linear infinite`,
-          }}>🌸</div>
-        ))}
       </section>
 
       {/* ===== ABOUT PREVIEW ===== */}

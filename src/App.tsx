@@ -22,7 +22,7 @@ const AppContent = () => {
   const isAdmin = location.pathname.startsWith('/admin');
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden">
       {/* Custom Glowing Trail Cursor */}
       {!isAdmin && <CustomCursor />}
 
