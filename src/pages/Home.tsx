@@ -59,12 +59,16 @@ const Home = () => {
               src={img}
               alt="Tamil Nadu Wedding Background"
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                i === bgIdx ? 'opacity-100 scale-105' : 'opacity-0 scale-100'
+                i === bgIdx ? 'opacity-100' : 'opacity-0'
               }`}
               style={{
                 transition: 'opacity 1.2s ease-in-out, transform 4.5s linear',
                 filter: 'brightness(1.12)',
-                objectPosition: 'center 45%'
+                objectPosition: 'center 45%',
+                backfaceVisibility: 'hidden',
+                WebkitBackfaceVisibility: 'hidden',
+                willChange: 'transform, opacity',
+                transform: i === bgIdx ? 'scale(1.05) translate3d(0, 0, 0)' : 'scale(1) translate3d(0, 0, 0)'
               }}
             />
           ))}
@@ -76,6 +80,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 w-full grid lg:grid-cols-2 gap-8 items-center relative z-20 pt-24 pb-12">
           {/* Left Text */}
           <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'translate3d(0, 0, 0)' }}
             className="text-center lg:text-left flex flex-col items-center lg:items-start">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full mb-6">
               <span className="text-accent text-sm font-tamil">சிறந்த விருந்து</span>
