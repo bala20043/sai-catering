@@ -16,12 +16,12 @@ export const useBooking = () => {
         .insert([{ ...data, id, status: 'pending' }]);
         
       if (err) throw err;
-      return { id, ...data };
+      return { data: { id, ...data }, error: null };
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       console.error('Booking submission error:', e);
       setError(e.message);
-      return null;
+      return { data: null, error: e.message };
     } finally {
       setLoading(false);
     }

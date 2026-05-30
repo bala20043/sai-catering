@@ -29,7 +29,7 @@ interface Props {
 }
 
 const BookingModal = ({ isOpen, onClose }: Props) => {
-  const { submitBooking, loading } = useBooking();
+  const { submitBooking, loading, error } = useBooking();
   const [step, setStep] = useState(1);
   const { register, handleSubmit, formState: { errors }, reset, trigger } = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -40,15 +40,15 @@ const BookingModal = ({ isOpen, onClose }: Props) => {
     if (isValid) setStep(2);
   };
 
-  const onSubmit = async (data: FormData) => {
-    const result = await submitBooking(data as any);
-    if (result) {
-      toast.success(`Booking confirmed! Reference: ${result.id.slice(0, 8).toUpperCase()}`, { duration: 5000 });
+  const onSubmit = async (formData: FormData) => {
+    const { data, error: submitError } = await submitBooking(formData as any);
+    if (data) {
+      toast.success(`Booking confirmed! Reference: ${data.id.slice(0, 8).toUpperCase()}`, { duration: 5000 });
       reset();
       setStep(1);
       onClose();
     } else {
-      toast.error(error || 'Failed to connect to the database. Please try again later.');
+      toast.error(submitError || 'Failed to connect to the database. Please try again later.');
     }
   };
 
