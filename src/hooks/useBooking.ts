@@ -19,6 +19,7 @@ export const useBooking = () => {
       return { id, ...data };
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
+      console.error('Booking submission error:', e);
       setError(e.message);
       return null;
     } finally {

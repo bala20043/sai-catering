@@ -41,7 +41,6 @@ const BookingModal = ({ isOpen, onClose }: Props) => {
   };
 
   const onSubmit = async (data: FormData) => {
-    // eslint-disable-next-line
     const result = await submitBooking(data as any);
     if (result) {
       toast.success(`Booking confirmed! Reference: ${result.id.slice(0, 8).toUpperCase()}`, { duration: 5000 });
@@ -49,7 +48,7 @@ const BookingModal = ({ isOpen, onClose }: Props) => {
       setStep(1);
       onClose();
     } else {
-      toast.error('Something went wrong. Please try again.');
+      toast.error(error || 'Failed to connect to the database. Please try again later.');
     }
   };
 
