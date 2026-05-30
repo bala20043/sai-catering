@@ -11,9 +11,16 @@ export const useBooking = () => {
     setError(null);
     try {
       const id = crypto.randomUUID();
-      const { error: err } = await supabase
+      
+      const insertPromise = supabase
         .from('bookings')
         .insert([{ ...data, id, status: 'pending' }]);
+
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('Connection timed out. Database might be offline.')), 10000);
+      });
+
+      const { error: err } = await Promise.race([insertPromise, timeoutPromise]) as any;
         
       if (err) throw err;
       return { data: { id, ...data }, error: null };
