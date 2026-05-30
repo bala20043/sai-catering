@@ -26,8 +26,6 @@ const WEDDING_BG_IMAGES = [
   'https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg?auto=compress&cs=tinysrgb&w=1200', // Steaming Traditional Tiffin Spread
   'https://images.pexels.com/photos/1114425/pexels-photo-1114425.jpeg?auto=compress&cs=tinysrgb&w=1200', // Marigold & Rose Wedding Decor
   'https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=1200', // Saffron Festive Biryani & Rice
-  'https://images.pexels.com/photos/3026804/pexels-photo-3026804.jpeg?auto=compress&cs=tinysrgb&w=1200', // Clay Pot Traditional Feast Cookout
-  'https://images.pexels.com/photos/6049609/pexels-photo-6049609.jpeg?auto=compress&cs=tinysrgb&w=1200', // Sweet Mysore Pak & Payasam Desserts
 ];
 
 const Home = () => {
